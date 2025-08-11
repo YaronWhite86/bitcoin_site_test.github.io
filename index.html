@@ -14,6 +14,9 @@
             background-color: #f7931a;
             background-image: linear-gradient(45deg, #f7931a 0%, #f9ac4b 100%);
         }
+        .accordion-content {
+            transition: max-height 0.3s ease-out;
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
@@ -77,18 +80,51 @@
         <!-- Getting Started -->
         <section id="getting-started" class="mb-16 scroll-mt-20">
             <h2 class="text-3xl font-bold text-center mb-8">Getting Started with Bitcoin</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                    <h3 class="text-xl font-bold mb-4">1. Get a Wallet</h3>
-                    <p>A Bitcoin wallet is a digital wallet that stores your Bitcoin. There are many types, from mobile apps to secure hardware devices. For beginners, a reputable mobile or web wallet is a good starting point.</p>
+            <div class="space-y-4">
+                <!-- Accordion Item 1 -->
+                <div class="bg-white rounded-lg shadow-md">
+                    <button class="accordion-header w-full flex justify-between items-center p-6 text-left">
+                        <h3 class="text-xl font-bold">1. Get a Wallet</h3>
+                        <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content hidden p-6 pt-0">
+                        <p class="mb-4">A wallet is where you store your Bitcoin. It doesn't hold the actual coins, but rather the secret "private keys" that prove ownership and allow you to spend them. There are two main types:</p>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li><strong>Software (Hot) Wallets:</strong> These are apps on your phone or computer. They are convenient for everyday use but are connected to the internet, making them less secure. Examples include mobile wallets and desktop wallets.</li>
+                            <li><strong>Hardware (Cold) Wallets:</strong> These are physical devices, like a USB stick, that store your keys offline. They are the most secure option for holding large amounts of Bitcoin long-term, as they are immune to online hacking.</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                    <h3 class="text-xl font-bold mb-4">2. Buy Bitcoin</h3>
-                    <p>You can buy Bitcoin on a cryptocurrency exchange. These are online platforms where you can buy, sell, and trade cryptocurrencies. Be sure to choose a well-known, regulated exchange.</p>
+                <!-- Accordion Item 2 -->
+                <div class="bg-white rounded-lg shadow-md">
+                    <button class="accordion-header w-full flex justify-between items-center p-6 text-left">
+                        <h3 class="text-xl font-bold">2. Buy Bitcoin</h3>
+                        <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content hidden p-6 pt-0">
+                        <p class="mb-4">The most common way to buy Bitcoin is through a cryptocurrency exchange. These are online platforms that facilitate the buying and selling of digital currencies. The process is typically:</p>
+                        <ol class="list-decimal list-inside space-y-2">
+                            <li><strong>Choose a Reputable Exchange:</strong> Look for well-known exchanges with strong security features and good reviews.</li>
+                            <li><strong>Create and Verify Your Account:</strong> You'll need to provide personal information and a valid ID to comply with regulations (this is called KYC or "Know Your Customer").</li>
+                            <li><strong>Connect a Payment Method:</strong> Link your bank account, debit card, or credit card.</li>
+                            <li><strong>Place Your Order:</strong> Decide how much Bitcoin you want to buy and complete the purchase.</li>
+                        </ol>
+                    </div>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                    <h3 class="text-xl font-bold mb-4">3. Keep it Secure</h3>
-                    <p>Once you own Bitcoin, it's crucial to keep it secure. Use strong, unique passwords for your exchange accounts and enable two-factor authentication (2FA). For larger amounts, consider moving your Bitcoin to a hardware wallet.</p>
+                <!-- Accordion Item 3 -->
+                <div class="bg-white rounded-lg shadow-md">
+                    <button class="accordion-header w-full flex justify-between items-center p-6 text-left">
+                        <h3 class="text-xl font-bold">3. Keep it Secure</h3>
+                        <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content hidden p-6 pt-0">
+                        <p class="mb-4">You are your own bank with Bitcoin, which means security is your responsibility. Follow these crucial practices:</p>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li><strong>Use Strong Passwords & 2FA:</strong> Protect your exchange account with a unique, complex password and enable Two-Factor Authentication (2FA).</li>
+                            <li><strong>Backup Your Seed Phrase:</strong> When you create a wallet, you'll get a "seed phrase" (12-24 random words). This is the master key to your funds. Write it down and store it in a secure, offline location. Never store it digitally or share it with anyone.</li>
+                            <li><strong>Beware of Phishing:</strong> Scammers will try to trick you into revealing your passwords or seed phrase. Be suspicious of unsolicited emails, messages, or links. Always double-check website URLs.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
@@ -180,6 +216,19 @@
             millennialTab.classList.remove('bg-white', 'text-gray-800');
             boomerTab.classList.add('bg-white', 'text-gray-800');
             boomerTab.classList.remove('bg-orange-500', 'text-white');
+        });
+
+        // Accordion functionality for "Getting Started" section
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const accordionContent = header.nextElementSibling;
+                const accordionIcon = header.querySelector('svg');
+
+                accordionContent.classList.toggle('hidden');
+                accordionIcon.classList.toggle('rotate-180');
+            });
         });
     </script>
 
