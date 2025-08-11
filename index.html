@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Explained: A Beginner's Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-bg {
+            background-color: #f7931a;
+            background-image: linear-gradient(45deg, #f7931a 0%, #f9ac4b 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-gray-800">Bitcoin Explained</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#what-is-bitcoin" class="text-gray-600 hover:text-orange-500">What is Bitcoin?</a>
+                <a href="#how-it-works" class="text-gray-600 hover:text-orange-500">How it Works</a>
+                <a href="#getting-started" class="text-gray-600 hover:text-orange-500">Getting Started</a>
+                <a href="#faq" class="text-gray-600 hover:text-orange-500">FAQ</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-600 hover:text-orange-500 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#what-is-bitcoin" class="block py-2 px-4 text-sm hover:bg-gray-200">What is Bitcoin?</a>
+            <a href="#how-it-works" class="block py-2 px-4 text-sm hover:bg-gray-200">How it Works</a>
+            <a href="#getting-started" class="block py-2 px-4 text-sm hover:bg-gray-200">Getting Started</a>
+            <a href="#faq" class="block py-2 px-4 text-sm hover:bg-gray-200">FAQ</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Welcome to the World of Bitcoin</h1>
+            <p class="text-lg md:text-xl mb-8">Your journey to understanding the future of money starts here.</p>
+            <a href="#what-is-bitcoin" class="bg-white text-orange-500 font-bold py-3 px-6 rounded-full hover:bg-gray-200 transition duration-300">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- What is Bitcoin? -->
+        <section id="what-is-bitcoin" class="mb-16 scroll-mt-20">
+            <h2 class="text-3xl font-bold text-center mb-8">What is Bitcoin?</h2>
+            <div class="bg-white p-8 rounded-lg shadow-md">
+                <p class="mb-4">Bitcoin is a decentralized digital currency, meaning it isn't controlled by any bank or government. It was created in 2009 by an unknown person or group of people using the name Satoshi Nakamoto. Think of it like digital cash that you can send directly to another person without going through a middleman like a bank.</p>
+                <p class="mb-4">Unlike traditional currencies, which can be printed at will, there's a limited supply of Bitcoin—only 21 million will ever be created. This scarcity is one of the key factors that gives it value.</p>
+                <p>Bitcoin is often called "digital gold" because, like gold, it can be a store of value, but it's much easier to transfer and store.</p>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section id="how-it-works" class="mb-16 scroll-mt-20">
+            <h2 class="text-3xl font-bold text-center mb-8">How Does Bitcoin Work?</h2>
+            <div class="bg-white p-8 rounded-lg shadow-md">
+                <p class="mb-4">Bitcoin transactions are recorded on a public ledger called the **blockchain**. The blockchain is a chain of "blocks," where each block contains a list of transactions. This ledger is distributed across thousands of computers worldwide, making it incredibly secure and resistant to tampering.</p>
+                <p class="mb-4">When you send Bitcoin, the transaction is broadcast to the network. Computers called **miners** compete to verify the transaction by solving a complex mathematical puzzle. The first miner to solve the puzzle adds the transaction to a new block on the blockchain and is rewarded with a small amount of new Bitcoin. This process is what's known as **mining**.</p>
+                <p>This decentralized and transparent system ensures that once a transaction is confirmed, it cannot be reversed or altered.</p>
+            </div>
+        </section>
+
+        <!-- Getting Started -->
+        <section id="getting-started" class="mb-16 scroll-mt-20">
+            <h2 class="text-3xl font-bold text-center mb-8">Getting Started with Bitcoin</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <h3 class="text-xl font-bold mb-4">1. Get a Wallet</h3>
+                    <p>A Bitcoin wallet is a digital wallet that stores your Bitcoin. There are many types, from mobile apps to secure hardware devices. For beginners, a reputable mobile or web wallet is a good starting point.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <h3 class="text-xl font-bold mb-4">2. Buy Bitcoin</h3>
+                    <p>You can buy Bitcoin on a cryptocurrency exchange. These are online platforms where you can buy, sell, and trade cryptocurrencies. Be sure to choose a well-known, regulated exchange.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <h3 class="text-xl font-bold mb-4">3. Keep it Secure</h3>
+                    <p>Once you own Bitcoin, it's crucial to keep it secure. Use strong, unique passwords for your exchange accounts and enable two-factor authentication (2FA). For larger amounts, consider moving your Bitcoin to a hardware wallet.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="scroll-mt-20">
+            <h2 class="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+            
+            <!-- FAQ Tabs -->
+            <div class="flex justify-center mb-8">
+                <button id="boomer-tab" class="faq-tab bg-orange-500 text-white py-2 px-6 rounded-l-lg">For Boomers</button>
+                <button id="millennial-tab" class="faq-tab bg-white text-gray-800 py-2 px-6 rounded-r-lg">For Millennials</button>
+            </div>
+
+            <!-- Boomer FAQs -->
+            <div id="boomer-faqs" class="faq-content">
+                <div class="space-y-4">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h4 class="font-bold text-lg mb-2">Is Bitcoin a safe investment for retirement?</h4>
+                        <p>Bitcoin is considered a high-risk asset due to its price volatility. While some people have seen significant returns, it's generally advised to only invest an amount you're willing to lose. Financial advisors often suggest a small allocation (1-5%) to cryptocurrencies within a diversified retirement portfolio, if at all. It's crucial to do your own research and consult with a financial advisor.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h4 class="font-bold text-lg mb-2">How is Bitcoin different from stocks or gold?</h4>
+                        <p>Unlike stocks, owning Bitcoin doesn't give you ownership in a company. Its value is not tied to a company's performance. Compared to gold, Bitcoin is digital, making it easier to store and transfer. Both are seen by some as a hedge against inflation due to their limited supply, but Bitcoin is much newer and more volatile.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h4 class="font-bold text-lg mb-2">What happens to my Bitcoin if I forget my password?</h4>
+                        <p>This is a critical point. If you lose access to your Bitcoin wallet (by forgetting the password or losing the device), your Bitcoin could be lost forever. There is no central authority to call for a password reset. This is why it's vital to securely back up your wallet's recovery phrase (a list of words that can restore your wallet).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Millennial FAQs -->
+            <div id="millennial-faqs" class="faq-content hidden">
+                <div class="space-y-4">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h4 class="font-bold text-lg mb-2">Can I use Bitcoin for everyday purchases?</h4>
+                        <p>While it's not as widely accepted as traditional currency, a growing number of businesses are starting to accept Bitcoin. However, due to its price volatility and transaction fees, it's more commonly used as an investment or a store of value rather than for daily transactions. The development of technologies like the Lightning Network is aiming to make Bitcoin transactions faster and cheaper.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h4 class="font-bold text-lg mb-2">What's the environmental impact of Bitcoin?</h4>
+                        <p>Bitcoin mining consumes a significant amount of energy. This is a valid concern, and the Bitcoin community is actively exploring more energy-efficient solutions. It's worth noting that a growing portion of Bitcoin mining is powered by renewable energy sources.</p>
+                    </div>
+                     <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h4 class="font-bold text-lg mb-2">Is Bitcoin the only cryptocurrency I should know about?</h4>
+                        <p>Bitcoin is the first and largest cryptocurrency, but there are thousands of others, known as "altcoins." Some, like Ethereum, offer different features, such as smart contracts, which are self-executing contracts with the terms of the agreement directly written into code. It's a good idea to understand Bitcoin first, as it's the foundation of the crypto market.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Bitcoin Explained. All Rights Reserved.</p>
+            <p class="text-sm text-gray-400 mt-2">Disclaimer: The information on this website is for educational purposes only and is not financial advice. Please do your own research and consult with a professional before making any investment decisions.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // FAQ tabs
+        const boomerTab = document.getElementById('boomer-tab');
+        const millennialTab = document.getElementById('millennial-tab');
+        const boomerFaqs = document.getElementById('boomer-faqs');
+        const millennialFaqs = document.getElementById('millennial-faqs');
+
+        boomerTab.addEventListener('click', () => {
+            boomerFaqs.classList.remove('hidden');
+            millennialFaqs.classList.add('hidden');
+            boomerTab.classList.add('bg-orange-500', 'text-white');
+            boomerTab.classList.remove('bg-white', 'text-gray-800');
+            millennialTab.classList.add('bg-white', 'text-gray-800');
+            millennialTab.classList.remove('bg-orange-500', 'text-white');
+        });
+
+        millennialTab.addEventListener('click', () => {
+            millennialFaqs.classList.remove('hidden');
+            boomerFaqs.classList.add('hidden');
+            millennialTab.classList.add('bg-orange-500', 'text-white');
+            millennialTab.classList.remove('bg-white', 'text-gray-800');
+            boomerTab.classList.add('bg-white', 'text-gray-800');
+            boomerTab.classList.remove('bg-orange-500', 'text-white');
+        });
+    </script>
+
+</body>
+</html>
