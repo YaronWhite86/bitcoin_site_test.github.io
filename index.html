@@ -1,21 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bitcoin Explained: A Beginner's Guide</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        body {
+        /* Use Inter for LTR and Rubik for RTL */
+        :lang(en) {
             font-family: 'Inter', sans-serif;
         }
-        .hero-bg {
-            background-color: #f7931a;
-            background-image: linear-gradient(45deg, #f7931a 0%, #f9ac4b 100%);
+        :lang(he) {
+            font-family: 'Rubik', sans-serif;
         }
         .accordion-content {
             transition: max-height 0.3s ease-out;
+        }
+        /* Flip accordion icon in RTL */
+        html[dir="rtl"] .accordion-header svg {
+            transform: rotate(180deg);
+        }
+        html[dir="rtl"] .accordion-header.open svg {
+             transform: rotate(0deg);
         }
     </style>
 </head>
@@ -24,35 +32,42 @@
     <!-- Header -->
     <header class="bg-white shadow-md sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-gray-800">Bitcoin Explained</a>
-            <div class="hidden md:flex space-x-6">
-                <a href="#what-is-bitcoin" class="text-gray-600 hover:text-orange-500">What is Bitcoin?</a>
-                <a href="#how-it-works" class="text-gray-600 hover:text-orange-500">How it Works</a>
-                <a href="#getting-started" class="text-gray-600 hover:text-orange-500">Getting Started</a>
-                <a href="#faq" class="text-gray-600 hover:text-orange-500">FAQ</a>
-                <a href="#technical-faq" class="text-gray-600 hover:text-orange-500">Technical FAQ</a>
-            </div>
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-gray-600 hover:text-orange-500 focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
+            <a href="#" id="nav-title" class="text-2xl font-bold text-gray-800">Bitcoin Explained</a>
+            <div class="flex items-center">
+                <div class="hidden md:flex space-x-6">
+                    <a href="#what-is-bitcoin" id="nav-what-is-bitcoin" class="text-gray-600 hover:text-orange-500">What is Bitcoin?</a>
+                    <a href="#how-it-works" id="nav-how-it-works" class="text-gray-600 hover:text-orange-500">How it Works</a>
+                    <a href="#getting-started" id="nav-getting-started" class="text-gray-600 hover:text-orange-500">Getting Started</a>
+                    <a href="#faq" id="nav-faq" class="text-gray-600 hover:text-orange-500">FAQ</a>
+                    <a href="#technical-faq" id="nav-technical-faq" class="text-gray-600 hover:text-orange-500">Technical FAQ</a>
+                </div>
+                 <!-- Language Switcher -->
+                <div class="ms-4 flex items-center">
+                    <button id="lang-en" class="px-3 py-1 text-sm font-bold bg-orange-500 text-white rounded-l-md">EN</button>
+                    <button id="lang-he" class="px-3 py-1 text-sm font-bold bg-gray-300 text-gray-700 rounded-r-md">HE</button>
+                </div>
+                <div class="md:hidden ms-4">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-orange-500 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
             </div>
         </nav>
         <div id="mobile-menu" class="hidden md:hidden">
-            <a href="#what-is-bitcoin" class="block py-2 px-4 text-sm hover:bg-gray-200">What is Bitcoin?</a>
-            <a href="#how-it-works" class="block py-2 px-4 text-sm hover:bg-gray-200">How it Works</a>
-            <a href="#getting-started" class="block py-2 px-4 text-sm hover:bg-gray-200">Getting Started</a>
-            <a href="#faq" class="block py-2 px-4 text-sm hover:bg-gray-200">FAQ</a>
-            <a href="#technical-faq" class="block py-2 px-4 text-sm hover:bg-gray-200">Technical FAQ</a>
+            <a href="#what-is-bitcoin" id="mobile-nav-what-is-bitcoin" class="block py-2 px-4 text-sm hover:bg-gray-200">What is Bitcoin?</a>
+            <a href="#how-it-works" id="mobile-nav-how-it-works" class="block py-2 px-4 text-sm hover:bg-gray-200">How it Works</a>
+            <a href="#getting-started" id="mobile-nav-getting-started" class="block py-2 px-4 text-sm hover:bg-gray-200">Getting Started</a>
+            <a href="#faq" id="mobile-nav-faq" class="block py-2 px-4 text-sm hover:bg-gray-200">FAQ</a>
+            <a href="#technical-faq" id="mobile-nav-technical-faq" class="block py-2 px-4 text-sm hover:bg-gray-200">Technical FAQ</a>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero-bg text-white py-20">
         <div class="container mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-4">Welcome to the World of Bitcoin</h1>
-            <p class="text-lg md:text-xl mb-8">Your journey to understanding the future of money starts here.</p>
-            <a href="#what-is-bitcoin" class="bg-white text-orange-500 font-bold py-3 px-6 rounded-full hover:bg-gray-200 transition duration-300">Learn More</a>
+            <h1 id="hero-title" class="text-4xl md:text-6xl font-bold mb-4">Welcome to the World of Bitcoin</h1>
+            <p id="hero-subtitle" class="text-lg md:text-xl mb-8">Your journey to understanding the future of money starts here.</p>
+            <a href="#what-is-bitcoin" id="hero-button" class="bg-white text-orange-500 font-bold py-3 px-6 rounded-full hover:bg-gray-200 transition duration-300">Learn More</a>
         </div>
     </section>
 
@@ -61,73 +76,73 @@
 
         <!-- What is Bitcoin? -->
         <section id="what-is-bitcoin" class="mb-16 scroll-mt-20">
-            <h2 class="text-3xl font-bold text-center mb-8">What is Bitcoin?</h2>
+            <h2 id="what-is-bitcoin-title" class="text-3xl font-bold text-center mb-8">What is Bitcoin?</h2>
             <div class="bg-white p-8 rounded-lg shadow-md">
-                <p class="mb-4">Bitcoin is a decentralized digital currency, meaning it isn't controlled by any bank or government. It was created in 2009 by an unknown person or group of people using the name Satoshi Nakamoto. Think of it like digital cash that you can send directly to another person without going through a middleman like a bank.</p>
-                <p class="mb-4">Unlike traditional currencies, which can be printed at will, there's a limited supply of Bitcoin—only 21 million will ever be created. This scarcity is one of the key factors that gives it value.</p>
-                <p>Bitcoin is often called "digital gold" because, like gold, it can be a store of value, but it's much easier to transfer and store.</p>
+                <p id="what-is-bitcoin-p1" class="mb-4">Bitcoin is a decentralized digital currency, meaning it isn't controlled by any bank or government. It was created in 2009 by an unknown person or group of people using the name Satoshi Nakamoto. Think of it like digital cash that you can send directly to another person without going through a middleman like a bank.</p>
+                <p id="what-is-bitcoin-p2" class="mb-4">Unlike traditional currencies, which can be printed at will, there's a limited supply of Bitcoin—only 21 million will ever be created. This scarcity is one of the key factors that gives it value.</p>
+                <p id="what-is-bitcoin-p3">Bitcoin is often called "digital gold" because, like gold, it can be a store of value, but it's much easier to transfer and store.</p>
             </div>
         </section>
 
         <!-- How It Works -->
         <section id="how-it-works" class="mb-16 scroll-mt-20">
-            <h2 class="text-3xl font-bold text-center mb-8">How Does Bitcoin Work?</h2>
+            <h2 id="how-it-works-title" class="text-3xl font-bold text-center mb-8">How Does Bitcoin Work?</h2>
             <div class="bg-white p-8 rounded-lg shadow-md">
-                <p class="mb-4">Bitcoin transactions are recorded on a public ledger called the **blockchain**. The blockchain is a chain of "blocks," where each block contains a list of transactions. This ledger is distributed across thousands of computers worldwide, making it incredibly secure and resistant to tampering.</p>
+                <p id="how-it-works-p1" class="mb-4">Bitcoin transactions are recorded on a public ledger called the **blockchain**. The blockchain is a chain of "blocks," where each block contains a list of transactions. This ledger is distributed across thousands of computers worldwide, making it incredibly secure and resistant to tampering.</p>
                 <div class="my-6">
-                    <img src="assets/btc_network_diagram_1.png" alt="Bitcoin Transaction Flow Diagram" class="mx-auto rounded-lg shadow-md">
+                    <img src="assets/btc_network_diagram_1.png" alt="Bitcoin Transaction Flow Diagram" class="mx-auto rounded-lg shadow-md" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f7931a/ffffff?text=Diagram+Not+Found';">
                 </div>
-                <p class="mb-4">When you send Bitcoin, the transaction is broadcast to the network. Computers called **miners** compete to verify the transaction by solving a complex mathematical puzzle. The first miner to solve the puzzle adds the transaction to a new block on the blockchain and is rewarded with a small amount of new Bitcoin. This process is what's known as **mining**.</p>
-                <p>This decentralized and transparent system ensures that once a transaction is confirmed, it cannot be reversed or altered.</p>
+                <p id="how-it-works-p2" class="mb-4">When you send Bitcoin, the transaction is broadcast to the network. Computers called **miners** compete to verify the transaction by solving a complex mathematical puzzle. The first miner to solve the puzzle adds the transaction to a new block on the blockchain and is rewarded with a small amount of new Bitcoin. This process is what's known as **mining**.</p>
+                <p id="how-it-works-p3">This decentralized and transparent system ensures that once a transaction is confirmed, it cannot be reversed or altered.</p>
             </div>
         </section>
 
         <!-- Getting Started -->
         <section id="getting-started" class="mb-16 scroll-mt-20">
-            <h2 class="text-3xl font-bold text-center mb-8">Getting Started with Bitcoin</h2>
+            <h2 id="getting-started-title" class="text-3xl font-bold text-center mb-8">Getting Started with Bitcoin</h2>
             <div class="space-y-4">
                 <!-- Accordion Item 1 -->
                 <div class="bg-white rounded-lg shadow-md">
                     <button class="accordion-header w-full flex justify-between items-center p-6 text-left">
-                        <h3 class="text-xl font-bold">1. Get a Wallet</h3>
+                        <h3 id="getting-started-step1-title" class="text-xl font-bold">1. Get a Wallet</h3>
                         <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="accordion-content hidden p-6 pt-0">
-                        <p class="mb-4">A wallet is where you store your Bitcoin. It doesn't hold the actual coins, but rather the secret "private keys" that prove ownership and allow you to spend them. There are two main types:</p>
-                        <ul class="list-disc list-inside space-y-2">
-                            <li><strong>Software (Hot) Wallets:</strong> These are apps on your phone or computer. They are convenient for everyday use but are connected to the internet, making them less secure. Examples include mobile wallets and desktop wallets.</li>
-                            <li><strong>Hardware (Cold) Wallets:</strong> These are physical devices, like a USB stick, that store your keys offline. They are the most secure option for holding large amounts of Bitcoin long-term, as they are immune to online hacking.</li>
+                        <p id="getting-started-step1-p1" class="mb-4">A wallet is where you store your Bitcoin. It doesn't hold the actual coins, but rather the secret "private keys" that prove ownership and allow you to spend them. There are two main types:</p>
+                        <ul class="list-disc list-inside space-y-2 ltr:pl-4 rtl:pr-4">
+                            <li id="getting-started-step1-li1"><strong>Software (Hot) Wallets:</strong> These are apps on your phone or computer. They are convenient for everyday use but are connected to the internet, making them less secure. Examples include mobile wallets and desktop wallets.</li>
+                            <li id="getting-started-step1-li2"><strong>Hardware (Cold) Wallets:</strong> These are physical devices, like a USB stick, that store your keys offline. They are the most secure option for holding large amounts of Bitcoin long-term, as they are immune to online hacking.</li>
                         </ul>
                     </div>
                 </div>
                 <!-- Accordion Item 2 -->
                 <div class="bg-white rounded-lg shadow-md">
                     <button class="accordion-header w-full flex justify-between items-center p-6 text-left">
-                        <h3 class="text-xl font-bold">2. Buy Bitcoin</h3>
+                        <h3 id="getting-started-step2-title" class="text-xl font-bold">2. Buy Bitcoin</h3>
                         <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="accordion-content hidden p-6 pt-0">
-                        <p class="mb-4">The most common way to buy Bitcoin is through a cryptocurrency exchange. These are online platforms that facilitate the buying and selling of digital currencies. The process is typically:</p>
-                        <ol class="list-decimal list-inside space-y-2">
-                            <li><strong>Choose a Reputable Exchange:</strong> Look for well-known exchanges with strong security features and good reviews.</li>
-                            <li><strong>Create and Verify Your Account:</strong> You'll need to provide personal information and a valid ID to comply with regulations (this is called KYC or "Know Your Customer").</li>
-                            <li><strong>Connect a Payment Method:</strong> Link your bank account, debit card, or credit card.</li>
-                            <li><strong>Place Your Order:</strong> Decide how much Bitcoin you want to buy and complete the purchase.</li>
+                        <p id="getting-started-step2-p1" class="mb-4">The most common way to buy Bitcoin is through a cryptocurrency exchange. These are online platforms that facilitate the buying and selling of digital currencies. The process is typically:</p>
+                        <ol class="list-decimal list-inside space-y-2 ltr:pl-4 rtl:pr-4">
+                            <li id="getting-started-step2-li1"><strong>Choose a Reputable Exchange:</strong> Look for well-known exchanges with strong security features and good reviews.</li>
+                            <li id="getting-started-step2-li2"><strong>Create and Verify Your Account:</strong> You'll need to provide personal information and a valid ID to comply with regulations (this is called KYC or "Know Your Customer").</li>
+                            <li id="getting-started-step2-li3"><strong>Connect a Payment Method:</strong> Link your bank account, debit card, or credit card.</li>
+                            <li id="getting-started-step2-li4"><strong>Place Your Order:</strong> Decide how much Bitcoin you want to buy and complete the purchase.</li>
                         </ol>
                     </div>
                 </div>
                 <!-- Accordion Item 3 -->
                 <div class="bg-white rounded-lg shadow-md">
                     <button class="accordion-header w-full flex justify-between items-center p-6 text-left">
-                        <h3 class="text-xl font-bold">3. Keep it Secure</h3>
+                        <h3 id="getting-started-step3-title" class="text-xl font-bold">3. Keep it Secure</h3>
                         <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="accordion-content hidden p-6 pt-0">
-                        <p class="mb-4">You are your own bank with Bitcoin, which means security is your responsibility. Follow these crucial practices:</p>
-                        <ul class="list-disc list-inside space-y-2">
-                            <li><strong>Use Strong Passwords & 2FA:</strong> Protect your exchange account with a unique, complex password and enable Two-Factor Authentication (2FA).</li>
-                            <li><strong>Backup Your Seed Phrase:</strong> When you create a wallet, you'll get a "seed phrase" (12-24 random words). This is the master key to your funds. Write it down and store it in a secure, offline location. Never store it digitally or share it with anyone.</li>
-                            <li><strong>Beware of Phishing:</strong> Scammers will try to trick you into revealing your passwords or seed phrase. Be suspicious of unsolicited emails, messages, or links. Always double-check website URLs.</li>
+                        <p id="getting-started-step3-p1" class="mb-4">You are your own bank with Bitcoin, which means security is your responsibility. Follow these crucial practices:</p>
+                        <ul class="list-disc list-inside space-y-2 ltr:pl-4 rtl:pr-4">
+                            <li id="getting-started-step3-li1"><strong>Use Strong Passwords & 2FA:</strong> Protect your exchange account with a unique, complex password and enable Two-Factor Authentication (2FA).</li>
+                            <li id="getting-started-step3-li2"><strong>Backup Your Seed Phrase:</strong> When you create a wallet, you'll get a "seed phrase" (12-24 random words). This is the master key to your funds. Write it down and store it in a secure, offline location. Never store it digitally or share it with anyone.</li>
+                            <li id="getting-started-step3-li3"><strong>Beware of Phishing:</strong> Scammers will try to trick you into revealing your passwords or seed phrase. Be suspicious of unsolicited emails, messages, or links. Always double-check website URLs.</li>
                         </ul>
                     </div>
                 </div>
@@ -136,146 +151,36 @@
 
         <!-- FAQ Section -->
         <section id="faq" class="mb-16 scroll-mt-20">
-            <h2 class="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+            <h2 id="faq-title" class="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
             
-            <!-- FAQ Tabs -->
             <div class="flex justify-center mb-8">
-                <button id="boomer-tab" class="faq-tab bg-orange-500 text-white py-2 px-6 rounded-l-lg">For Boomers</button>
-                <button id="millennial-tab" class="faq-tab bg-white text-gray-800 py-2 px-6 rounded-r-lg">For Millennials</button>
+                <button id="boomer-tab" class="faq-tab bg-orange-500 text-white py-2 px-6 rounded-l-lg"><span id="faq-boomer-tab-text">For Boomers</span></button>
+                <button id="millennial-tab" class="faq-tab bg-white text-gray-800 py-2 px-6 rounded-r-lg"><span id="faq-millennial-tab-text">For Millennials</span></button>
             </div>
 
-            <!-- Boomer FAQs -->
             <div id="boomer-faqs" class="faq-content">
                 <div class="space-y-4">
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h4 class="font-bold text-lg mb-2">Is Bitcoin a safe investment for retirement?</h4>
-                        <p>Bitcoin is considered a high-risk asset due to its price volatility. While some people have seen significant returns, it's generally advised to only invest an amount you're willing to lose. Financial advisors often suggest a small allocation (1-5%) to cryptocurrencies within a diversified retirement portfolio, if at all. It's crucial to do your own research and consult with a financial advisor.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h4 class="font-bold text-lg mb-2">How is Bitcoin different from stocks or gold?</h4>
-                        <p>Unlike stocks, owning Bitcoin doesn't give you ownership in a company. Its value is not tied to a company's performance. Compared to gold, Bitcoin is digital, making it easier to store and transfer. Both are seen by some as a hedge against inflation due to their limited supply, but Bitcoin is much newer and more volatile.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h4 class="font-bold text-lg mb-2">What happens to my Bitcoin if I forget my password?</h4>
-                        <p>This is a critical point. If you lose access to your Bitcoin wallet (by forgetting the password or losing the device), your Bitcoin could be lost forever. There is no central authority to call for a password reset. This is why it's vital to securely back up your wallet's recovery phrase (a list of words that can restore your wallet).</p>
-                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md"><h4 id="faq-boomer-q1-title" class="font-bold text-lg mb-2">Is Bitcoin a safe investment for retirement?</h4><p id="faq-boomer-q1-p1">Bitcoin is considered a high-risk asset due to its price volatility. While some people have seen significant returns, it's generally advised to only invest an amount you're willing to lose. Financial advisors often suggest a small allocation (1-5%) to cryptocurrencies within a diversified retirement portfolio, if at all. It's crucial to do your own research and consult with a financial advisor.</p></div>
+                    <div class="bg-white p-6 rounded-lg shadow-md"><h4 id="faq-boomer-q2-title" class="font-bold text-lg mb-2">How is Bitcoin different from stocks or gold?</h4><p id="faq-boomer-q2-p1">Unlike stocks, owning Bitcoin doesn't give you ownership in a company. Its value is not tied to a company's performance. Compared to gold, Bitcoin is digital, making it easier to store and transfer. Both are seen by some as a hedge against inflation due to their limited supply, but Bitcoin is much newer and more volatile.</p></div>
+                    <div class="bg-white p-6 rounded-lg shadow-md"><h4 id="faq-boomer-q3-title" class="font-bold text-lg mb-2">What happens to my Bitcoin if I forget my password?</h4><p id="faq-boomer-q3-p1">This is a critical point. If you lose access to your Bitcoin wallet (by forgetting the password or losing the device), your Bitcoin could be lost forever. There is no central authority to call for a password reset. This is why it's vital to securely back up your wallet's recovery phrase (a list of words that can restore your wallet).</p></div>
                 </div>
             </div>
 
-            <!-- Millennial FAQs -->
             <div id="millennial-faqs" class="faq-content hidden">
                 <div class="space-y-4">
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h4 class="font-bold text-lg mb-2">Can I use Bitcoin for everyday purchases?</h4>
-                        <p>While it's not as widely accepted as traditional currency, a growing number of businesses are starting to accept Bitcoin. However, due to its price volatility and transaction fees, it's more commonly used as an investment or a store of value rather than for daily transactions. The development of technologies like the Lightning Network is aiming to make Bitcoin transactions faster and cheaper.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h4 class="font-bold text-lg mb-2">What's the environmental impact of Bitcoin?</h4>
-                        <p>Bitcoin mining consumes a significant amount of energy. This is a valid concern, and the Bitcoin community is actively exploring more energy-efficient solutions. It's worth noting that a growing portion of Bitcoin mining is powered by renewable energy sources.</p>
-                    </div>
-                     <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h4 class="font-bold text-lg mb-2">Is Bitcoin the only cryptocurrency I should know about?</h4>
-                        <p>Bitcoin is the first and largest cryptocurrency, but there are thousands of others, known as "altcoins." Some, like Ethereum, offer different features, such as smart contracts, which are self-executing contracts with the terms of the agreement directly written into code. It's a good idea to understand Bitcoin first, as it's the foundation of the crypto market.</p>
-                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md"><h4 id="faq-millennial-q1-title" class="font-bold text-lg mb-2">Can I use Bitcoin for everyday purchases?</h4><p id="faq-millennial-q1-p1">While it's not as widely accepted as traditional currency, a growing number of businesses are starting to accept Bitcoin. However, due to its price volatility and transaction fees, it's more commonly used as an investment or a store of value rather than for daily transactions. The development of technologies like the Lightning Network is aiming to make Bitcoin transactions faster and cheaper.</p></div>
+                    <div class="bg-white p-6 rounded-lg shadow-md"><h4 id="faq-millennial-q2-title" class="font-bold text-lg mb-2">What's the environmental impact of Bitcoin?</h4><p id="faq-millennial-q2-p1">Bitcoin mining consumes a significant amount of energy. This is a valid concern, and the Bitcoin community is actively exploring more energy-efficient solutions. It's worth noting that a growing portion of Bitcoin mining is powered by renewable energy sources.</p></div>
+                    <div class="bg-white p-6 rounded-lg shadow-md"><h4 id="faq-millennial-q3-title" class="font-bold text-lg mb-2">Is Bitcoin the only cryptocurrency I should know about?</h4><p id="faq-millennial-q3-p1">Bitcoin is the first and largest cryptocurrency, but there are thousands of others, known as "altcoins." Some, like Ethereum, offer different features, such as smart contracts, which are self-executing contracts with the terms of the agreement directly written into code. It's a good idea to understand Bitcoin first, as it's the foundation of the crypto market.</p></div>
                 </div>
             </div>
         </section>
 
         <!-- Technical FAQ Section -->
         <section id="technical-faq" class="scroll-mt-20">
-            <h2 class="text-3xl font-bold text-center mb-8">Common Technical Questions</h2>
+            <h2 id="technical-faq-title" class="text-3xl font-bold text-center mb-8">Common Technical Questions</h2>
             <div class="bg-white p-8 rounded-lg shadow-md">
-                <h3 class="text-2xl font-bold mb-4">What is a Peer-to-Peer (P2P) Network?</h3>
-                <p class="mb-4">A Peer-to-Peer (P2P) network is a system where individual computers, known as "peers" or "nodes," connect and share resources directly with each other without needing a central server. This is the foundation of Bitcoin's decentralization.</p>
-                <p class="mb-4">In a traditional <strong>client-server</strong> model (like a typical website), all data is stored on a central server, and individual clients request information from it. If that server goes down, the entire network fails. In a <strong>P2P network</strong>, every peer holds a copy of the data, making the system incredibly resilient. If one peer goes offline, the network continues to function without interruption.</p>
+                <h3 id="technical-faq-p2p-title" class="text-2xl font-bold mb-4">What is a Peer-to-Peer (P2P) Network?</h3>
+                <p id="technical-faq-p2p-p1" class="mb-4">A Peer-to-Peer (P2P) network is a system where individual computers, known as "peers" or "nodes," connect and share resources directly with each other without needing a central server. This is the foundation of Bitcoin's decentralization.</p>
+                <p id="technical-faq-p2p-p2" class="mb-4">In a traditional <strong>client-server</strong> model (like a typical website), all data is stored on a central server, and individual clients request information from it. If that server goes down, the entire network fails. In a <strong>P2P network</strong>, every peer holds a copy of the data, making the system incredibly resilient. If one peer goes offline, the network continues to function without interruption.</p>
                 <div class="my-6 grid md:grid-cols-2 gap-8 items-center">
-                    <div class="text-center">
-                        <h4 class="font-bold mb-2">Traditional Client-Server</h4>
-                        <svg class="w-full h-48" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
-                           <circle cx="100" cy="40" r="15" fill="#FBBF24"/>
-                           <text x="100" y="45" font-size="10" text-anchor="middle" fill="black">Server</text>
-                           <circle cx="30" cy="120" r="10" fill="#9CA3AF"/>
-                           <circle cx="80" cy="120" r="10" fill="#9CA3AF"/>
-                           <circle cx="130" cy="120" r="10" fill="#9CA3AF"/>
-                           <circle cx="180" cy="120" r="10" fill="#9CA3AF"/>
-                           <path d="M100 55 V 110 M30 110 L 100 55" stroke="#6B7280" stroke-width="1"/>
-                           <path d="M80 110 L 100 55" stroke="#6B7280" stroke-width="1"/>
-                           <path d="M130 110 L 100 55" stroke="#6B7280" stroke-width="1"/>
-                           <path d="M180 110 L 100 55" stroke="#6B7280" stroke-width="1"/>
-                        </svg>
-                    </div>
-                    <div class="text-center">
-                        <h4 class="font-bold mb-2">Peer-to-Peer (P2P) Network</h4>
-                        <svg class="w-full h-48" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
-                           <circle cx="100" cy="20" r="10" fill="#F97316"/>
-                           <circle cx="40" cy="60" r="10" fill="#F97316"/>
-                           <circle cx="160" cy="60" r="10" fill="#F97316"/>
-                           <circle cx="70" cy="120" r="10" fill="#F97316"/>
-                           <circle cx="130" cy="120" r="10" fill="#F97316"/>
-                           <path d="M 100 20 L 40 60 L 70 120 L 130 120 L 160 60 L 100 20 M 40 60 L 130 120 M 160 60 L 70 120" stroke="#6B7280" stroke-width="1" fill="none"/>
-                        </svg>
-                    </div>
-                </div>
-                <p>When you make a Bitcoin transaction, it's broadcast to this P2P network. Each peer (or node) validates the transaction and adds it to their copy of the ledger. This collective agreement ensures the security and integrity of the entire blockchain without relying on a single point of trust like a bank.</p>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8 mt-16">
-        <div class="container mx-auto px-6 text-center">
-            <p>&copy; 2025 Bitcoin Explained. All Rights Reserved.</p>
-            <p class="text-sm text-gray-400 mt-2">Disclaimer: The information on this website is for educational purposes only and is not financial advice. Please do your own research and consult with a professional before making any investment decisions.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // FAQ tabs
-        const boomerTab = document.getElementById('boomer-tab');
-        const millennialTab = document.getElementById('millennial-tab');
-        const boomerFaqs = document.getElementById('boomer-faqs');
-        const millennialFaqs = document.getElementById('millennial-faqs');
-
-        boomerTab.addEventListener('click', () => {
-            boomerFaqs.classList.remove('hidden');
-            millennialFaqs.classList.add('hidden');
-            boomerTab.classList.add('bg-orange-500', 'text-white');
-            boomerTab.classList.remove('bg-white', 'text-gray-800');
-            millennialTab.classList.add('bg-white', 'text-gray-800');
-            millennialTab.classList.remove('bg-orange-500', 'text-white');
-        });
-
-        millennialTab.addEventListener('click', () => {
-            millennialFaqs.classList.remove('hidden');
-            boomerFaqs.classList.add('hidden');
-            millennialTab.classList.add('bg-orange-500', 'text-white');
-            millennialTab.classList.remove('bg-white', 'text-gray-800');
-            boomerTab.classList.add('bg-white', 'text-gray-800');
-            boomerTab.classList.remove('bg-orange-500', 'text-white');
-        });
-
-        // Accordion functionality for "Getting Started" section
-        const accordionHeaders = document.querySelectorAll('.accordion-header');
-
-        accordionHeaders.forEach(header => {
-            header.addEventListener('click', () => {
-                const accordionContent = header.nextElementSibling;
-                const accordionIcon = header.querySelector('svg');
-
-                accordionContent.classList.toggle('hidden');
-                accordionIcon.classList.toggle('rotate-180');
-            });
-        });
-    </script>
-
-</body>
-</html>
+                    <div class="text-center"><h4 id="technical-faq-p2p-diagram1-title" class="font-bold mb-2">Traditional Client-Server</h4><svg class="w-full h-48" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="40" r="15" fill="#FBBF24"/><text x="100" y="45" font-size="10" text-anchor="middle" fill="black">Server</text><circle cx="30" cy="120" r="10" fill="#9CA3AF"/><circle cx="80" cy="
